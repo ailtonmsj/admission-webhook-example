@@ -5,7 +5,7 @@ metadata:
   labels:
     app: admission-webhook-example
 webhooks:
-  - name: required-labels.qikqiak.com
+  - name: required-labels.deployment.validation
     clientConfig:
       service:
         name: admission-webhook-example-svc
@@ -17,6 +17,7 @@ webhooks:
         apiGroups: ["apps", ""]
         apiVersions: ["v1"]
         resources: ["deployments","services"]
+    # The namespaces where the webhook will be applied
     namespaceSelector:
       matchLabels:
         admission-webhook-example: enabled

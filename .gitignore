@@ -13,6 +13,8 @@
 
 vendor/*
 
+# this file must be dynamically created
 deployment/mutatingwebhook-ca-bundle.yaml
-deployment/validatingwebhook-ca-bundle.yaml
+# this file must be dynamically created
+deployment/validatingwebhook-ca-bundle.yaml 
 .vscode/*

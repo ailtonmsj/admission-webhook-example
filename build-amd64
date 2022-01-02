@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# It is needed go installed on build machine, on ubuntu can be done with:
+#sudo apt-get update
+#sudo apt-get install gccgo-go
+
+#It is needed create a DOCKER_USER variable: export DOCKER_USER=YOUR_DOCKER_USER
+: ${DOCKER_USER:? required}
+
+export GO111MODULE=on 
+export GOPROXY=https://goproxy.cn
+
+# build webhook AMD64
+CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o admission-webhook-example 
+
+# build and push docker image for linux/arm64 and linux/amd64, carefull with go arch (this example is not for multiple archs) - commented by problems with GO arch
+#docker buildx build --no-cache -t ${DOCKER_USER}/admission-webhook-example:v1 --platform linux/arm64,linux/amd64 --push .
+
+# build and push docker image for linux/amd64
+docker buildx build --no-cache -t ${DOCKER_USER}/admission-webhook-example:v1-linux-amd64 --platform linux/amd64 --push .
+
+rm -rf admission-webhook-example

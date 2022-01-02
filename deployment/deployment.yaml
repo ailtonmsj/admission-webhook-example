@@ -17,7 +17,10 @@ spec:
       serviceAccount: admission-webhook-example-sa
       containers:
         - name: admission-webhook-example
-          image: cnych/admission-webhook-example:v1
+          # for ARM 64
+          image: ailtonmsj/admission-webhook-example:v1-linux-arm64
+          # for AMD 64
+          #image: ailtonmsj/admission-webhook-example:v1-linux-amd64
           imagePullPolicy: Always
           args:
             - -tlsCertFile=/etc/webhook/certs/cert.pem

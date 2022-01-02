@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sleep
+  name: frontend-static
   labels:
-    app.kubernetes.io/name: sleep
-    app.kubernetes.io/instance: sleep
+    app.kubernetes.io/name: frontend-static
+    app.kubernetes.io/instance: frontend-static
     app.kubernetes.io/version: "0.1"
     app.kubernetes.io/component: dummy
     app.kubernetes.io/part-of: admission-webhook-example
@@ -13,14 +13,13 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app.kubernetes.io/name: sleep
+      app.kubernetes.io/name: frontend-static
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: sleep
+        app.kubernetes.io/name: frontend-static
     spec:
       containers:
-      - name: sleep
-        image: tutum/curl
-        command: ["/bin/sleep","infinity"]
+      - name: frontend-static
+        image: ailtonmsj/frontend-static:v1
         imagePullPolicy: IfNotPresent
