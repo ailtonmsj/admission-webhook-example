@@ -15,7 +15,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/serializer"
-	"k8s.io/kubernetes/pkg/apis/core/v1"
+	v1 "k8s.io/kubernetes/pkg/apis/core/v1"
 )
 
 var (
@@ -47,13 +47,14 @@ var (
 		componentLabel: NA,
 		partOfLabel:    NA,
 		managedByLabel: NA,
+		injectedLabel:  TRUE,
 	}
 )
 
 const (
-	admissionWebhookAnnotationValidateKey = "admission-webhook-example.qikqiak.com/validate"
-	admissionWebhookAnnotationMutateKey   = "admission-webhook-example.qikqiak.com/mutate"
-	admissionWebhookAnnotationStatusKey   = "admission-webhook-example.qikqiak.com/status"
+	admissionWebhookAnnotationValidateKey = "admission-webhook-example.ailtonmsj.com.br/validate"
+	admissionWebhookAnnotationMutateKey   = "admission-webhook-example.ailtonmsj.com.br/mutate"
+	admissionWebhookAnnotationStatusKey   = "admission-webhook-example.ailtonmsj.com.br/status"
 
 	nameLabel      = "app.kubernetes.io/name"
 	instanceLabel  = "app.kubernetes.io/instance"
@@ -61,8 +62,10 @@ const (
 	componentLabel = "app.kubernetes.io/component"
 	partOfLabel    = "app.kubernetes.io/part-of"
 	managedByLabel = "app.kubernetes.io/managed-by"
+	injectedLabel  = "app.kubernetes.io/injectedLabel"
 
-	NA = "not_available"
+	NA   = "not_available"
+	TRUE = "true"
 )
 
 type WebhookServer struct {

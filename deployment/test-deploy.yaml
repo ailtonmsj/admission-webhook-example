@@ -1,18 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sleep
+  name: frontend-static
 spec:
   selector:
     matchLabels:
-      app: sleep
+      app: frontend-static
   template:
     metadata:
       labels:
-        app: sleep
+        app: frontend-static
     spec:
       containers:
-      - name: sleep
-        image: tutum/curl
-        command: ["/bin/sleep","infinity"]
+      - name: frontend-static
+        image: ailtonmsj/frontend-static:v1
         imagePullPolicy: IfNotPresent

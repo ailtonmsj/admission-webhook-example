@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-static
+  annotations:
+    admission-webhook-example.ailtonmsj.com.br/validate: "false"
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: frontend-static
+  template:
+    metadata:
+      labels:
+        app: frontend-static
+    spec:
+      containers:
+      - name: frontend-static
+        image: ailtonmsj/frontend-static:v1
+        imagePullPolicy: IfNotPresent
